@@ -16,7 +16,7 @@ def generate_sequence(difficulty):
 
     print(list_of_rand)
     time.sleep(1)
-    os.system('cls' if os.name=='nt' else 'clear')
+    os.system('cls' if os.name =='nt' else 'clear')
 
     return list_of_rand
 
@@ -35,16 +35,15 @@ def is_list_equal(list1, list2):
     """ - A function to compare two lists if they are equal. The function will return  True / False."""
     for i in range(len(list1)):
         if list1[i] != list2[i]:
-            print("The list is not equal")
+            print("\n\n The list is not equal \n")
             return False
-    print("good !!! you are right ")
+    print("\n\n good !!! you are right \n")
     return True
 
 
-def play():
+def play(difficulty):
     """- Will call the functions above and play the game. Will return True / False if the user
         lost or won."""
-    difficulty = int(input("pleas enter number of numbers do you wont to rember"))
     result_list = generate_sequence(difficulty)
     guess_list = get_list_from_user(difficulty)
-    is_list_equal(result_list, guess_list)
+    return is_list_equal(result_list, guess_list)

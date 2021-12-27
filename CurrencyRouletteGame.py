@@ -2,6 +2,7 @@ import requests
 import os
 import random
 
+
 def get_money_interval(difficulty):
     """In this func we Will get the current currency rate
             from USD to ILS and will generate an interval"""
@@ -38,14 +39,5 @@ def get_guess_from_user(intervals):
             print("You need to input a number")
 
 
-def play():
-    while True:
-        try:
-            difficulty = int(input("Pleas input a difficulty number between 1 - 5:  "))
-            if difficulty > 6 or difficulty < 0:
-                pass
-            else:
-                break
-        except:
-            print("You need to input a number between 1 - 5")
-    get_money_interval(difficulty)
+def play(difficulty):
+    return get_money_interval(difficulty)
