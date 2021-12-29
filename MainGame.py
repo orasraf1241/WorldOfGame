@@ -19,7 +19,7 @@ def choosing_difficulty():
                 return difficulty
             else:
                 pass
-        except:
+        except BaseException:
             print("You need to input a number between 1 - 5")
 
 
@@ -61,7 +61,7 @@ def load_game():
 
 
 if __name__ == "__main__":
-    name = welcome(input("pleas enter your name :"))
+    welcome(input("pleas enter your name :"))
     load_game()
     MainScores.app.run(debug=True)
 

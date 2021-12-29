@@ -10,6 +10,7 @@ def score_server():
     try:
         file = open(SCORES_FILE_NAME, 'r+')
         test = file.read()
+        file.close()
         return render_template("Score.html", SCORE=test)
     except OSError:
         error = "OSerror"
