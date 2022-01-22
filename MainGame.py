@@ -11,6 +11,7 @@ def welcome(name):
 
 
 def choosing_difficulty():
+    """choosing the difficulty of the game"""
     while True:
         try:
             difficulty = int(input("Pleas input a difficulty number between 1 - 5:  "))
@@ -24,7 +25,8 @@ def choosing_difficulty():
 
 
 def load_game():
-    while True:
+    boole = True
+    while boole:
         try:
             while True:
                 game_select = int(input("""Please choose a game to play:
@@ -54,15 +56,14 @@ def load_game():
                     Score.add_score(diff)
 
             if game_select == 4:
-                return
+                boole = False
 
-        except:
+
+        except :
             print("You need to insert a number between 1 - 4")
 
 
 if __name__ == "__main__":
     welcome(input("pleas enter your name :"))
     load_game()
-    MainScores.app.run(debug=True)
-
-
+    # MainScores.app.run(debug=True)

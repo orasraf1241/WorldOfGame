@@ -8,10 +8,13 @@ app = Flask(__name__)
 @app.route('/')
 def score_server():
     try:
-        file = open(SCORES_FILE_NAME, 'r+')
-        test = file.read()
-        file.close()
-        return render_template("Score.html", SCORE=test)
+        with open(SCORES_FILE_NAME, 'r+') as file:
+            test = file.read()
+            return render_template("Score.html", SCORE=test)
     except OSError:
         error = "OSerror"
         return render_template("Error.html", ERROR=error)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
