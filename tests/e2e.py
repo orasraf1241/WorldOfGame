@@ -10,8 +10,7 @@ url = 'http://127.0.0.1:5000/'
 
 def test_score_service():
     try:
-
-        my_driver = webdriver.Chrome(executable_path="/home/or/Desktop/devop_experts/WorldOfGame/test/chromedriver")
+        my_driver = webdriver.Chrome(executable_path="chromedriver")
         my_driver.get(url)
         score = int(my_driver.find_element_by_id("score").text)
         return 0 <= score <= 1000
