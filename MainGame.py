@@ -64,6 +64,6 @@ def load_game():
 
 
 if __name__ == "__main__":
-    welcome(input("pleas enter your name :"))
-    load_game()
+    # welcome(input("pleas enter your name :"))
+    # load_game()
     MainScores.app.run()

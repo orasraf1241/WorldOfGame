@@ -6,4 +6,4 @@ RUN pip install Flask
 RUN pip install selenium
 #RUN pip install -r requirements.txt
 EXPOSE 8777
-CMD ["python","/opt/app/tests/e2e.py"]
+CMD ["python","MainGame.py"]
