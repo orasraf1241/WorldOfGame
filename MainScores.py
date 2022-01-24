@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def score_server():
+    print("i am in the score_server")
     try:
         with open(SCORES_FILE_NAME, 'r+') as file:
             test = file.read()
