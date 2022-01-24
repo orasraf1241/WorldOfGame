@@ -11,18 +11,18 @@ pipeline {
 
             stage('building docker file ') {
                 steps {
-                    sh 'sudo docker build . -t world_of_game:01'
+                    sh 'sudo docker build . -t world_of_game'
                 }
             }
 
             stage('Run docker image') {
-                agent{
+                agent {
                     docker  {
-                        image 'world_of_game:01'
+                        image 'world_of_game'
                         reuseNode true
                     }
                 }
-                steps{
+                steps {
                       sh 'python3 MainGame.py &'
                       sh 'ls'
                       sh 'pwd'
