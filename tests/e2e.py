@@ -20,12 +20,13 @@ def test_score_service():
 
 
 def main_function():
-    if test_score_service():
-        print(0)
-        return sys.exit(0)
-    else:
-        print(-1)
-        return sys.exit(-1)
+    # if test_score_service():
+    #     print(0)
+    #     return sys.exit(0)
+    # else:
+    #     print(-1)
+    #     return sys.exit(-1)
+    return sys.exit(-1)
 
 
 
