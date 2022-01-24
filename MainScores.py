@@ -14,7 +14,3 @@ def score_server():
     except OSError:
         error = "OSerror"
         return render_template("Error.html", ERROR=error)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
