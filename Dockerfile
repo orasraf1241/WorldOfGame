@@ -5,5 +5,5 @@ WORKDIR /opt/app
 #RUN pip install Flask
 #RUN pip install selenium
 RUN pip install -r requirements.txt
-EXPOSE 8777
+#EXPOSE 8777
 CMD ["python","MainGame.py"]
