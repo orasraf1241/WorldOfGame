@@ -1,27 +1,36 @@
 pipeline {
     agent any
     stages {
-            stage('1. GIt checkout') {
+            stage('GIt checkout') {
                 steps {
                     git branch: 'master',
                     credentialsId: 'orasraf1241',
                     url: 'https://github.com/orasraf1241/WorldOfGame.git'
                 }
             }
-            stage('2. build docker file ') {
+
+            stage('building docker file ') {
                 steps {
-                    sh 'docker build -t WorldOfGames .'
+                    sh 'sudo docker build . -t world_of_game:01'
                 }
             }
-            stage('3. Run docker image') {
-                steps{
-                    agent{ dockerfile true }
-                            docker {
-                                image 'WorldOfGames'
-                                // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
-                                reuseNode true
-                            }
+
+            stage('Run docker image') {
+                agent{
+                    docker  {
+                        image 'world_of_game:01'
+                        reuseNode true
                     }
+                }
+                steps{
+                      sh 'python3 MainGame.py &'
+                      sh 'ls'
+                      sh 'pwd'
+                      sleep 5
+                      sh 'python3 tests/e2e.py'
+                }
             }
+        }
     }
- }
+
+
