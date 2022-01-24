@@ -64,4 +64,4 @@ def load_game():
 
 
 if __name__ == "__main__":
-    MainScores.app.run(debug=True, host="0.0.0.0")
+    MainScores.app.run(debug=True, host="0.0.0.0", port=5000)

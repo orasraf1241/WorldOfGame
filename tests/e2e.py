@@ -1,18 +1,19 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
 from time import sleep
 import sys
 
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
 
-url = 'http://172.17.0.3:5000/'
+url = 'http://172.17.0.2:5000/'
 
 
 def test_score_service():
     try:
-        my_driver = webdriver.Chrome(executable_path="/home/or/Desktop/devops_experts/WorldOfGame/tests/chromedriver")
+        my_driver = webdriver.Chrome(ChromeDriverManager().install())
         my_driver.get(url)
-        score = int(my_driver.find_element_by_id("score").text)
+        score = int(my_driver.find_element_by_id('score').text)
+        my_driver.close()
         return 0 <= score <= 1000
     except BaseException:
         print("cannot open the server")
