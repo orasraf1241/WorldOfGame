@@ -5,7 +5,7 @@ from time import sleep
 import sys
 
 
-url = 'http://172.17.0.2:5000/'
+url = 'http://127.0.0.1:5000/'
 
 
 def test_score_service():

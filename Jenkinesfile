@@ -23,12 +23,13 @@ pipeline {
                     }
                 }
                 steps {
-                      sh 'python3 MainGame.py &'
-                      sh 'ls'
-                      sh 'pwd'
-                      sleep 5
-                      sh 'python3 tests/e2e.py'
+                    sh 'docker run --name docker-game -d -t -p 8777:80 world_of_game'
                 }
+            }
+            stage ('Test') {
+                steps {
+                sh 'docker exec -t -d docker-game python /MainScores.py'
+                sh 'docker exec -t -d docker-game python /tests/e2e.py'                }
             }
         }
     }
