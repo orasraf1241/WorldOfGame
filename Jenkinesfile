@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    stages {
+        stages {
             stage('GIt checkout') {
                 steps {
                     git branch: 'master',
@@ -11,27 +11,35 @@ pipeline {
 
             stage('building docker file ') {
                 steps {
-                    sh 'sudo docker build . -t world_of_game'
+                    sh 'sudo docker build -t axa124/world_of_game .'
                 }
             }
 
             stage('Run docker image') {
-                agent {
-                    docker  {
-                        image 'world_of_game'
-                        reuseNode true
-                    }
-                }
                 steps {
                     sh 'docker run --name docker-game -d -t -p 8777:80 world_of_game'
                 }
             }
+
             stage ('Test') {
                 steps {
-                sh 'docker exec -t -d docker-game python /MainScores.py'
-                sh 'docker exec -t -d docker-game python /tests/e2e.py'                }
+                    sh 'docker exec -t -d docker-game python /MainScores.py'
+                    sh 'docker exec -t -d docker-game python /tests/e2e.py'
+                   }
             }
-        }
-    }
 
+            stage ('stop and delete') {
+                steps{
+                    sh 'docker stop docker-game'
+                    sh 'sudo docker rm docker-game'
+                }
+            }
+
+            stage('Push image') {
+                 steps{
+                      sh 'docker push axa124/world_of_game'
+                 }
+            }
+    }
+}
 
